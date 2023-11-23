@@ -114,5 +114,5 @@ def matrice_idf(dico_entrant):
             else:
                 dico_sortant[cle]=1
     for cle in dico_sortant.keys():
-        dico_sortant[key]=mat.log(1/dico_sortant[key])
+        dico_sortant[key]=mat.log(1/(dico_sortant[key]/len(dico_entrant))
         
