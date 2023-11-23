@@ -9,7 +9,7 @@ list_name=nom_president(files_names)
 print(list_name)
 #afficher les prénoms
 print(prenom(list_name))
-"""
+
 #transferer les fichiers
 conversion_min(files_names)
 
@@ -22,10 +22,9 @@ for i in files_names :
     with open("cleaned/" + i, "r") as f:
         content = f.readlines()
         dictionnaire_speech[i]= occurence_matrice_tf(str(content))
-print(dictionnaire_speech["Nomination_Macron.txt"])
 
 for texte in files_names:
     dico=dictionnaire_speech[texte]
-    """
 
+print(matrice_idf(dictionnaire_speech))
 

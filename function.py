@@ -1,4 +1,5 @@
 import os
+import math
 #fonction pour récuperer les noms des docs
 def list_of_files(directory, extension):
     files_names = []
@@ -37,7 +38,7 @@ def prenom (list_name) :
 
 
 def conversion_min (list_doc) :
-    os.mkdir("cleaned")
+    #os.mkdir("cleaned")
     print(list_doc)
     for i in list_doc :
         with open("speeches/" + i, "r") as f1,open("cleaned/"+i,"w") as f2:
@@ -97,7 +98,7 @@ def occurence_matrice_tf(chaine_de_caractere):
     mot=""
     dictionnaire={}
     print(chaine_de_caractere)
-    for i in range(len(chaine_de_caractere)):
+    for i in range(2,len(chaine_de_caractere)-2): #commencement a 2 et fin a -2 pour éviter les crochets et les guillements de début et de fin
         if chaine_de_caractere[i]==" ":
             if mot in dictionnaire:
                 dictionnaire[mot]+=1
@@ -118,15 +119,16 @@ def occurence_matrice_tf(chaine_de_caractere):
     return dictionnaire
 
 def matrice_idf(dico_entrant):
-    import math
     dico_sortant={}
+
     for matrice_tf in dico_entrant.values():
         for cle in matrice_tf.keys():
             if cle in dico_sortant.keys():
-                dico_sortant[cle]=+1
+                dico_sortant[cle]+=1
             else:
                 dico_sortant[cle]=1
-    for cle in dico_sortant.keys():
-        dico_sortant[key]=mat.log(1/(dico_sortant[key]/len(dico_entrant))
+    print(dico_sortant)
+    for key in dico_sortant.keys():
+        dico_sortant[key]=math.log(1/(dico_sortant[key]/len(dico_entrant)))
     return dico_sortant
         
