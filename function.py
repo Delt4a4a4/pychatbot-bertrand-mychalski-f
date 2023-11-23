@@ -105,6 +105,7 @@ def occurence_matrice_tf(chaine_de_caractere):
     return dictionnaire
 
 def matrice_idf(dico_entrant):
+    import math
     nombre_apparition={}
     for matrice_tf in dico_entrant.values():
         for cle in matrice_tf.keys():
@@ -112,3 +113,6 @@ def matrice_idf(dico_entrant):
                 dico_sortant[cle]=+1
             else:
                 dico_sortant[cle]=1
+    for cle in dico_sortant.keys():
+        dico_sortant[key]=mat.log(1/dico_sortant[key])
+        
