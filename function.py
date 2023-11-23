@@ -21,6 +21,19 @@ def nom_president (list_doc) :
     return list_name
 
 def prenom (list_name) :
+    L=[]
+    for i in list_name :
+        if i == "Macron" :
+            L.append("Emmanuel"+" " + i)
+        elif i == "Chirac" :
+            L.append("Jacques" + " " + i)
+        elif i == "Sarkozy" :
+            L.append("Nicolas" + " " + i)
+        elif i == "Mitterrand" or i=="Hollande" :
+            L.append("François" + " " + i)
+        elif i == "Giscard dEstaing" :
+            L.append("Valéry" + " " + i)
+    return L
 
 
 def conversion_min (list_doc) :
@@ -106,7 +119,7 @@ def occurence_matrice_tf(chaine_de_caractere):
 
 def matrice_idf(dico_entrant):
     import math
-    nombre_apparition={}
+    dico_sortant={}
     for matrice_tf in dico_entrant.values():
         for cle in matrice_tf.keys():
             if cle in dico_sortant.keys():
