@@ -1,4 +1,5 @@
 from function import *
+#test
 directory = "./speeches"
 files_names = list_of_files(directory, "txt")
 print(files_names)
