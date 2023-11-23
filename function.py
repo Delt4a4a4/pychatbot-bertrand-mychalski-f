@@ -103,3 +103,12 @@ def occurence_matrice_tf(chaine_de_caractere):
     print(dictionnaire)
     del dictionnaire[""]
     return dictionnaire
+
+def matrice_idf(dico_entrant):
+    nombre_apparition={}
+    for matrice_tf in dico_entrant.values():
+        for cle in matrice_tf.keys():
+            if cle in dico_sortant.keys():
+                dico_sortant[cle]=+1
+            else:
+                dico_sortant[cle]=1
