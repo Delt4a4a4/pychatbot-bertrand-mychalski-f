@@ -123,9 +123,10 @@ def matrice_idf(dico_entrant):
     for matrice_tf in dico_entrant.values():
         for cle in matrice_tf.keys():
             if cle in dico_sortant.keys():
-                dico_sortant[cle]=+1
+                dico_sortant[cle]=dico_sortant[cle]+1
             else:
                 dico_sortant[cle]=1
+    
     for cle in dico_sortant.keys():
         dico_sortant[key]=mat.log(1/(dico_sortant[key]/len(dico_entrant))
     return dico_sortant
