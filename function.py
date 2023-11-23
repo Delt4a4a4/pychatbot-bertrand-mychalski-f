@@ -1,5 +1,5 @@
 import os
-#fonction pour récuper les noms des docs
+#fonction pour récuperer les noms des docs
 def list_of_files(directory, extension):
     files_names = []
     for filename in os.listdir(directory):
@@ -20,8 +20,8 @@ def nom_president (list_doc) :
             list_name.append(x)
     return list_name
 
-def prenom () :
-    pass
+def prenom (list_name) :
+
 
 def conversion_min (list_doc) :
     os.mkdir("cleaned")

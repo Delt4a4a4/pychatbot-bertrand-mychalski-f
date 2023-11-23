@@ -1,11 +1,14 @@
 from function import *
+
 directory = "./speeches"
 files_names = list_of_files(directory, "txt")
 print(files_names)
 
 #afficher les prénoms des présidents
-#print(nom_president(files_names))
+list_name=print(nom_president(files_names))
 
+#afficher les prénoms
+print(prenom(list_name))
 #transferer les fichiers
 conversion_min(files_names)
 
