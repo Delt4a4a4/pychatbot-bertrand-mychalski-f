@@ -132,3 +132,12 @@ def matrice_idf(dico_entrant):
         dico_sortant[key]=math.log(1/(dico_sortant[key]/len(dico_entrant)))
     return dico_sortant
         
+def matrice_tf_idf(integral_dico_tf,dico_idf):
+    score_tf_idf={}
+    for nom_texte in integral_dico_tf.keys:
+        score_tf_idf_par_texte={}
+        for mot in integral_dico_tf[nom_texte].keys:
+            score_tf_idf_par_texte[mot]=integral_dico_tf[nom_texte][mot]*dico_idf[mot]
+        score_tf_idf[nom_texte]=score_tf_idf_par_texte
+            
+            
