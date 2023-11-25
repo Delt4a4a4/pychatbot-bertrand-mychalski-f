@@ -125,10 +125,10 @@ def matrice_idf(dico_entrant):
 def matrice_tf_idf(integral_dico_tf,dico_idf):
     """
     entrée : 
-        - (integral_dico_tf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF
-        - (dico_idf) : dictionnaire associant à chaque mot son score IDF
+        - (integral_dico_tf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF (int)
+        - (dico_idf) : dictionnaire associant à chaque mot son score IDF (float)
     sortie :
-        - (score_tf_idf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF-IDF
+        - (score_tf_idf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF-IDF (float)
         
     Description :
         - La fonction parcours pour chaque dictionnaire TF(inscrit en valeur) associé à chaque texte(inscrit en clé) l'ensemble des mots et multiplie le score TF
