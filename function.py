@@ -125,18 +125,23 @@ def matrice_idf(dico_entrant):
 def matrice_tf_idf(integral_dico_tf,dico_idf):
     """
     entrée : 
-        - dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF
-        - dictionnaire associant à chaque mot son score IDF
+        - (integral_dico_tf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF
+        - (dico_idf) : dictionnaire associant à chaque mot son score IDF
     sortie :
-        - dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF-IDF
+        - (score_tf_idf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF-IDF
+        
+    Description :
+        - La fonction parcours pour chaque dictionnaire TF(inscrit en valeur) associé à chaque texte(inscrit en clé) l'ensemble des mots et multiplie le score TF
+        par le score IDF (à l'aide du mot qui sert de clé aussi dans le dictionnaire IDF) et inscrit le score TF-IDF ainsi obtenu dans un nouveau dictionnaire qui 
+        à chaque nom de fichier (la clé) associe un dictionnaire(la valeur) contenant le score TF-IDF de chaque mot.
     """
-    score_tf_idf={}
-    for nom_texte in integral_dico_tf.keys():
-        score_tf_idf_par_texte={}
-        for mot in integral_dico_tf[nom_texte].keys():
-            score_tf_idf_par_texte[mot]=integral_dico_tf[nom_texte][mot]*dico_idf[mot]
-        score_tf_idf[nom_texte]=score_tf_idf_par_texte
-    return score_tf_idf
+    score_tf_idf={} # initialisation du dico qui va être retourné
+    for nom_texte in integral_dico_tf.keys(): # parcour le nom des textes enregistrés en clés dans le dico contenant les dico TF de chaque texte
+        score_tf_idf_par_texte={} # initialisation des dicos TF-IDF de chaque texte
+        for mot in integral_dico_tf[nom_texte].keys(): # parcour les mots enregistré en clé de chaque sous-dico
+            score_tf_idf_par_texte[mot]=integral_dico_tf[nom_texte][mot]*dico_idf[mot] # multiplie le score TF par le score IDF et enregistre le score TF-IDF dans un sous-dico
+        score_tf_idf[nom_texte]=score_tf_idf_par_texte # enregistre les dico des scores tf idf par texte dans le dico les contenants tous
+    return score_tf_idf # retournement du dico obtenu
 
 #Fonctionnalité 1 :
 def list_mot_non_important(file_name,dico_tf_idf) :
