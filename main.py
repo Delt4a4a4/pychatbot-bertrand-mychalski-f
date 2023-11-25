@@ -78,11 +78,17 @@ def Fonctionnalité () :
             if i[1] > max :
                 max = i[1]
                 nom = i[0]
-        print("Les présidents qui ont utilisé le mot 'Nation' sont :",Liste," et le president qui a le plus utilisé le mot 'Nation' est : ",nom)
+        if len(Liste) > 0 :
+            print("Les présidents qui ont utilisé le mot 'Nation' sont :",Liste," et le president qui a le plus utilisé le mot 'Nation' est : ",nom)
+        else :
+            print("Aucun président n'a utilisé le mot Nation")
     if num == 5 : #Fonctionnalité 5
-        pass
+        if premier_ecologiste(dictionnaire_speech) == False :
+            print("Aucun president n'a parlé d'écologie")
+        else :
+            print("Le premier president à avoir parler d'écologie est :",premier_ecologiste(dictionnaire_speech))
     if num == 6 : #Fonctionnalité 6
-        print(mot_répété_par_tous(dico_matrice_idf))
+        print("Hormis les mots dits « non importants »les mots répété par tous sont :",mot_répété_par_tous(dico_matrice_idf))
 
 Fonctionnalité()
 

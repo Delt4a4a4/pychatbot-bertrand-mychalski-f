@@ -202,24 +202,22 @@ def mot_répété_par_tous(dico_idf):
     return liste_mot
 
 
-    def premier_ecologiste(dico_ensemble_itf):
-        ordre_textes=[
+def premier_ecologiste(dico_ensemble_itf):
+    ordre_textes=[
                 "Nomination_Giscard dEstaing.txt",
                 "Nomination_Chirac1.txt","Nomination_Chirac2.txt",
                 "Nomination_Mitterrand1.txt", "Nomination_Mitterrand2.txt",
                 "Nomination_Sarkozy.txt"
                 "Nomination_Hollande.txt",
-                "Nomination_Macron.txt"
-                ]
-    lexique_ecologie = [
-        "ecologie", "environnement","environnements", "durable", "biodiversite", "écosysteme","ecosystemes", "renouvelable", "climatique","climatiques", "carbone",
+                "Nomination_Macron.txt"]
+    lexique_ecologie = ["ecologie", "environnement","environnements", "durable", "biodiversite", "écosysteme","ecosystemes", "renouvelable", "climatique","climatiques", "carbone",
         "deforestation", "pollution","pollutions", "recyclage","serre","eco", "energetique","nature","biologique","biologiques", "environnementale","environnemental","environnementaux" 
         "faune", "flore","rechauffement","giec","ecologiste","ecologistes","agroecologie", "ecologique","ecologiques","verte","vert","vertes","verts", "espèces","espèce",
         "animaux","animal","permaculture", "naturelles", "naturel","naturelle","naturels"
     ]
-    for indice_texte in len(range(ordre_textes)) :
+    for indice_texte in range(len(ordre_textes)) :
         for mot in lexique_ecologie:
-            if mot in dico_ensemble_itf[ordre_textes[i]].keys():
+            if mot in dico_ensemble_itf[ordre_textes[indice_texte]].keys():
                 if indice_texte == 1:
                     president = "Valérie Giscard d'Estaing"
                 elif indice_texte == 2 or indice_texte == 3:
@@ -232,7 +230,5 @@ def mot_répété_par_tous(dico_idf):
                     president = "Francois Hollande"
                 else :
                     president = "Emmanuel Macron"
-                print("Le premier président à avoir parlé d'écologie est :", president)
-                return
-    print("Aucun président n'a parlé d'écologie dans son discours")
-    return
+                return president
+    return False
