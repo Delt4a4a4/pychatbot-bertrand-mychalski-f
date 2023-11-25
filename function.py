@@ -165,6 +165,9 @@ def mot_le_plus_repeter (nom_president,dico_speeche) :
     for i in dico_speeche[nom_president].items() :
         if i[1] > max :
             max = i[1]
+            mot=[]
+            mot.append(i[0])
+        elif i[1] == max :
             mot.append(i[0])
     return mot,max
 
