@@ -9,17 +9,13 @@ def list_of_files(directory, extension):
     return files_names
 
 #fonction pour extraire les noms des présidents
-def nom_president (list_doc) :
-    list_name= []
-    for i in range(len(list_doc)) :
-        j=11 #commencement a 11 pour éviter Nomination_
-        x= str()
-        while (ord(list_doc[i][j]) > 96 and ord(list_doc[i][j]) < 123) or (ord(list_doc[i][j]) > 64 and ord(list_doc[i][j]) < 91) or ord(list_doc[i][j]) == 32 :
-            x+= list_doc[i][j]
-            j+=1
-        if x not in list_name : #verification pour ne pas mettre de doublon
-            list_name.append(x)
-    return list_name
+def nom_president (nom_texte) :
+    j=11 #commencement a 11 pour éviter Nomination_
+    x= str()
+    while (ord(nom_texte[j]) > 96 and ord(nom_texte[j]) < 123) or (ord(nom_texte[j]) > 64 and ord(nom_texte[j]) < 91) or ord(nom_texte[j]) == 32 :
+        x+= nom_texte[j]
+        j+=1
+    return x
 
 def prenom (list_name) :
     L=[]
@@ -170,6 +166,14 @@ def mot_le_plus_repeter (nom_president,dico_speeche) :
         elif i[1] == max :
             mot.append(i[0])
     return mot,max
+
+def Trouver_mot (mot,dico_speech,file_name) :
+    Dico_President_occurence = {}
+    for i in file_name :
+        if mot in dico_speech[i].keys() :
+            Dico_President_occurence[nom_president(i)] = dico_speech[i][mot]
+    return Dico_President_occurence
+
 
 
             

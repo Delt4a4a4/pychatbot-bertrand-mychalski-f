@@ -4,7 +4,10 @@ directory = "./speeches"
 files_names = list_of_files(directory, "txt")
 
 #récupération des noms des présidents
-liste_nom=nom_president(files_names)
+liste_nom=[]
+for name in files_names :
+    if nom_president(name) not in liste_nom :
+        liste_nom.append(nom_president(name))
 
 #récuperation des prénoms des présidents
 liste_prenom_nom=prenom(liste_nom)
@@ -41,8 +44,10 @@ def Fonctionnalité () :
                   "Pour la fonctionnalité 6 : taper 6 "))
     while num <1 or num > 6 :
         num=int(input("Cette fonctionnalité n'est pas disponible veuillez donner un numéro entre 1 et 6 inclus !"))
+
     if num == 1  : #Fonctionnalité 1
         print("La liste des mots non important est : ",list_mot_non_important(files_names, dico_matrice_tf_idf))  #Fonctionnalité 1
+
     if num == 2  : #Fonctionnalité 2
         if len(Tf_Idf_elever(files_names, dico_matrice_tf_idf)) ==1 :
             print("Le mot ayant le score TD-IDF le plus élever est :",Tf_Idf_elever(files_names, dico_matrice_tf_idf))
@@ -65,7 +70,15 @@ def Fonctionnalité () :
             else :
                 print("Les mots le plus répeter par Chirac sont :", texte2[0])
     if num == 4 : #Fonctionnalité 4
-        pass
+        dico=Trouver_mot("nation",dictionnaire_speech,files_names)
+        max=0
+        Liste=[]
+        for i in dico.items() :
+            Liste.append(i[0])
+            if i[1] > max :
+                max = i[1]
+                nom = i[0]
+        print("Les présidents qui ont utilisé le mot 'Nation' sont :",Liste," et le president qui a le plus utilisé le mot 'Nation' est : ",nom)
     if num == 5 : #Fonctionnalité 5
         pass
     if num == 6 : #Fonctionnalité 6
