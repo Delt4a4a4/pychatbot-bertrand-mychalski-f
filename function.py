@@ -208,6 +208,18 @@ def mot_répété_par_tous(dico_idf):
 
 
 def premier_ecologiste(dico_ensemble_itf):
+    """
+    entrée : 
+        - (dico_ensemble_itf) : dictionnaire associant à chaque nom de texte (str) un dictionnaire associant à chaque mot (str) son score TF (int)
+    sortie :
+        - (président) : nom du président (str) ayant parlé en premier d'écologie 
+        
+    Description :
+        - La fonction parcours dans l'ordre des mandats les clés du dictionnaire dico_enesemble_itf associant à chaque nom de fichier (clé) un sous-dictionnaire(valeur) dans lequel chaque mot est associé à son score TF. 
+        Elle parcours ensuite une liste (list) contenant des mots du lexique de l'écologie (str) et vérifie si chacun de ces mots est présent dans le dictionnaire. Dès qu'un des mots est présent dans un dictionnaire, la
+        la fonction cherche le nom du président associé au texte à l'aide d'une succession de condition. Enfin, la fonction s'arrête en renvoyant une chaine str contenant le nom du président ayant en premier employé un terme 
+        associé au champ lexical de l'écologie.
+    """
     ordre_textes=[
                 "Nomination_Giscard dEstaing.txt",
                 "Nomination_Chirac1.txt","Nomination_Chirac2.txt",
