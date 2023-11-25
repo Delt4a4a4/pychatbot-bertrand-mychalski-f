@@ -26,5 +26,7 @@ for i in files_names :
 for texte in files_names:
     dico=dictionnaire_speech[texte]
 
-print(matrice_idf(dictionnaire_speech))
+x=(matrice_idf(dictionnaire_speech))
+print(x)
+print(matrice_tf_idf(dictionnaire_speech,x))
 
