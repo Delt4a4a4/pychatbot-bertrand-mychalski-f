@@ -123,6 +123,13 @@ def matrice_idf(dico_entrant):
     return dico_sortant
         
 def matrice_tf_idf(integral_dico_tf,dico_idf):
+    """
+    entrée : 
+        - dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF
+        - dictionnaire associant à chaque mot son score IDF
+    sortie :
+        - dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF-IDF
+    """
     score_tf_idf={}
     for nom_texte in integral_dico_tf.keys():
         score_tf_idf_par_texte={}
