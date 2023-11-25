@@ -233,8 +233,7 @@ def premier_ecologiste(dico_ensemble_itf):
     lexique_ecologie = ["ecologie", "environnement","environnements", "durable", "biodiversite", "écosysteme","ecosystemes", "renouvelable", "climatique","climatiques", "carbone",
         "deforestation", "pollution","pollutions", "recyclage","serre","eco", "energetique","nature","biologique","biologiques", "environnementale","environnemental","environnementaux" 
         "faune", "flore","rechauffement","giec","ecologiste","ecologistes","agroecologie", "ecologique","ecologiques","verte","vert","vertes","verts", "espèces","espèce",
-        "animaux","animal","permaculture", "naturelles", "naturel","naturelle","naturels"
-    ]
+        "animaux","animal","permaculture", "naturelles", "naturel","naturelle","naturels"]
     for indice_texte in range(len(ordre_textes)) :
         for mot in lexique_ecologie:
             if mot in dico_ensemble_itf[ordre_textes[indice_texte]].keys():
