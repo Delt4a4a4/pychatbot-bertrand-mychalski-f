@@ -193,3 +193,39 @@ def mot_répété_par_tous(dico_idf):
         if dico_idf[mot]==0 and dico_idf[mot] not in mots_non_importants:
             liste_mot.append(mot)
     return liste_mot
+
+
+    def premier_ecologiste(dico_ensemble_itf):
+        ordre_textes=[
+                "Nomination_Giscard dEstaing.txt",
+                "Nomination_Chirac1.txt","Nomination_Chirac2.txt",
+                "Nomination_Mitterrand1.txt", "Nomination_Mitterrand2.txt",
+                "Nomination_Sarkozy.txt"
+                "Nomination_Hollande.txt",
+                "Nomination_Macron.txt"
+                ]
+    lexique_ecologie = [
+        "ecologie", "environnement","environnements", "durable", "biodiversite", "écosysteme","ecosystemes", "renouvelable", "climatique","climatiques", "carbone",
+        "deforestation", "pollution","pollutions", "recyclage","serre","eco", "energetique","nature","biologique","biologiques", "environnementale","environnemental","environnementaux" 
+        "faune", "flore","rechauffement","giec","ecologiste","ecologistes","agroecologie", "ecologique","ecologiques","verte","vert","vertes","verts", "espèces","espèce",
+        "animaux","animal","permaculture", "naturelles", "naturel","naturelle","naturels"
+    ]
+    for indice_texte in len(range(ordre_textes)) :
+        for mot in lexique_ecologie:
+            if mot in dico_ensemble_itf[ordre_textes[i]].keys():
+                if indice_texte == 1:
+                    president = "Valérie Giscard d'Estaing"
+                elif indice_texte == 2 or indice_texte == 3:
+                    president = "Jacques Chirac"
+                elif indice_texte == 4 or indice_texte == 5:
+                    president = "François Mitterand"
+                elif indice_texte == 6:
+                    president = "Nicolas Sarkozy"
+                elif indice_texte == 7:
+                    president = "Francois Hollande"
+                else :
+                    president = "Emmanuel Macron"
+                print("Le premier président à avoir parlé d'écologie est :", president)
+                return
+    print("Aucun président n'a parlé d'écologie dans son discours")
+    return
