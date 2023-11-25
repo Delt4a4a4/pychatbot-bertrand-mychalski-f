@@ -125,8 +125,8 @@ def matrice_idf(dico_entrant):
 def matrice_tf_idf(integral_dico_tf,dico_idf):
     """
     entrée : 
-        - (integral_dico_tf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF (int)
-        - (dico_idf) : dictionnaire associant à chaque mot son score IDF (float)
+        - integral_dico_tf (dict) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF (int)
+        - dico_idf (dict) : dictionnaire associant à chaque mot son score IDF (float)
     sortie :
         - (score_tf_idf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF-IDF (float)
         
@@ -210,9 +210,9 @@ def mot_répété_par_tous(dico_idf):
 def premier_ecologiste(dico_ensemble_itf):
     """
     entrée : 
-        - (dico_ensemble_itf) : dictionnaire associant à chaque nom de texte (str) un dictionnaire associant à chaque mot (str) son score TF (int)
+        - dico_ensemble_itf (dict) : dictionnaire associant à chaque nom de texte (str) un dictionnaire associant à chaque mot (str) son score TF (int)
     sortie :
-        - (président) : nom du président (str) ayant parlé en premier d'écologie 
+        - president (str) : nom du président (str) ayant parlé en premier d'écologie 
         
     Description :
         - La fonction parcours dans l'ordre des mandats les clés du dictionnaire dico_enesemble_itf associant 
