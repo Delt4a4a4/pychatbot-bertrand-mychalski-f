@@ -77,7 +77,6 @@ def conversion_lettre (list_texte) :
             for line in content :
                 chaine=""
                 for i in line :
-                    print(i)
                     if i == "Ã" :
                         chaine += ""
                     if i == "§" : #ç
