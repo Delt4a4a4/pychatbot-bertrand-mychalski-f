@@ -49,13 +49,26 @@ def Fonctionnalité () :
         else :
             print("Les mots ayant le score le plus élever sont :",Tf_Idf_elever(files_names, dico_matrice_tf_idf))
 
-    if num == 3 :
+    if num == 3 : #Fonctionnalité 3
+        texte1=mot_le_plus_repeter("Nomination_Chirac1.txt",dictionnaire_speech)
+        texte2= mot_le_plus_repeter("Nomination_Chirac2.txt",dictionnaire_speech)
+        if texte1[1] > texte2[1] :
+            if len(texte1[0]) == 1:
+                print("Le mot le plus répeter par Chirac est :",texte1[0])
+            else :
+                print("Les mots le plus répeter par Chirac sont :", texte1[0])
+        elif texte1[1] == texte2[1] :
+            print("Les mots les plus répeter par Chirac sont :", texte1[0]+texte2[0])
+        else :
+            if len(texte2[0]) == 1 :
+                print("Le mot le plus répeter par Chirac est :", texte2[0])
+            else :
+                print("Les mots le plus répeter par Chirac sont :", texte2[0])
+    if num == 4 : #Fonctionnalité 4
         pass
-    if num == 4 :
+    if num == 5 : #Fonctionnalité 5
         pass
-    if num == 5 :
-        pass
-    if num == 6 :
+    if num == 6 : #Fonctionnalité 6
         pass
 
 Fonctionnalité()

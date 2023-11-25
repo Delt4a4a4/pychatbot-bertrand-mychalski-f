@@ -159,6 +159,15 @@ def Tf_Idf_elever (file_name,dico_tf_idf) :
                 Liste.append(j[0])
     return Liste
 
+def mot_le_plus_repeter (nom_president,dico_speeche) :
+    max=0
+    mot=[]
+    for i in dico_speeche[nom_president].items() :
+        if i[1] > max :
+            max = i[1]
+            mot.append(i[0])
+    return mot,max
+
 
             
             
