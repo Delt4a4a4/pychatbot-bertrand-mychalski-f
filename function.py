@@ -174,3 +174,22 @@ def mot_le_plus_repeter (nom_president,dico_speeche) :
 
             
             
+def mot_répété_par_tous(dico_idf):
+    mots_non_importants=["au", "aux", "avec", "ce", "ces", "dans", "de", "des", "du", "elle", "en", "et", "eux", "il", "ils",
+    "je", "la", "le", "les", "leur", "lui", "ma", "mais", "me", "meme", "mes", "moi", "mon", "ne", "nos",
+    "notre", "nous", "on", "ou", "par", "pas", "pour", "qu", "que", "qui", "sa", "se", "ses", "son", "sur",
+    "ta", "te", "tes", "toi", "ton", "tu", "un", "une", "vos", "votre", "vous", "c", "d", "j", "l", "a","m",
+    "m", "n", "s", "t", "y", "ete", "etee", "etees", "etes", "etant", "etante", "etants", "etantes", "suis",
+    "es", "est", "sommes", "etes", "sont", "serai", "seras", "sera", "serons", "serez", "seront", "serais",
+    "serait", "serions", "seriez", "seraient", "etais", "etait", "etions", "etiez", "etaient", "fus", "fut",
+    "fumes", "futes", "furent", "sois", "soit", "soyons", "soyez", "soient", "fusse", "fusses", "fut",
+    "fussions", "fussiez", "fussent", "ayant", "ayante", "ayantes", "ayants", "eu", "eue", "eues", "eus",
+    "ai", "as", "avons", "avez", "ont", "aurai", "auras", "aura", "aurons", "aurez", "auront", "aurais",
+    "aurait", "aurions", "auriez", "auraient", "avais", "avait", "avions", "aviez", "avaient", "eut",
+    "eumes", "eutes", "eurent", "aie", "aies", "ait", "ayons", "ayez", "aient", "eusse", "eusses", "eut",
+    "eussions", "eussiez", "eussent"]
+    liste_mot=[]
+    for mot in dico_idf.keys():
+        if dico_idf[mot]==0 and dico_idf[mot] not in mots_non_importants:
+            liste_mot.append(mot)
+    return liste_mot
