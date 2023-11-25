@@ -39,7 +39,6 @@ def prenom (list_name) :
 
 def conversion_min (list_doc) :
     #os.mkdir("cleaned")
-    print(list_doc)
     for i in list_doc :
         with open("speeches/" + i, "r") as f1,open("cleaned/"+i,"w") as f2:
                 content = f1.readlines()
@@ -96,7 +95,6 @@ def conversion_lettre (list_texte) :
 def occurence_matrice_tf(chaine_de_caractere):
     mot=""
     dictionnaire={}
-    print(chaine_de_caractere)
     for i in range(2,len(chaine_de_caractere)-2): #commencement a 2 et fin a -2 pour éviter les crochets et les guillements de début et de fin
         if chaine_de_caractere[i]==" ":
             if mot in dictionnaire:
@@ -113,20 +111,17 @@ def occurence_matrice_tf(chaine_de_caractere):
             mot=""
         else:
             mot=mot+chaine_de_caractere[i]
-    print(dictionnaire)
     del dictionnaire[""]
     return dictionnaire
 
 def matrice_idf(dico_entrant):
     dico_sortant={}
-
     for matrice_tf in dico_entrant.values():
         for cle in matrice_tf.keys():
             if cle in dico_sortant.keys():
                 dico_sortant[cle]+=1
             else:
                 dico_sortant[cle]=1
-    print(dico_sortant)
     for key in dico_sortant.keys():
         dico_sortant[key]=math.log(1/(dico_sortant[key]/len(dico_entrant)))
     return dico_sortant
@@ -139,6 +134,30 @@ def matrice_tf_idf(integral_dico_tf,dico_idf):
             score_tf_idf_par_texte[mot]=integral_dico_tf[nom_texte][mot]*dico_idf[mot]
         score_tf_idf[nom_texte]=score_tf_idf_par_texte
     return score_tf_idf
+
+#Fonctionnalité 1 :
+def list_mot_non_important(file_name,dico_tf_idf) :
+    Liste = []
+    for i in file_name :
+        for j in dico_tf_idf[i].items() :
+            if j[1] == 0 :
+                if j  not in Liste :
+                    Liste.append(j[0])
+    return Liste
+
+def Tf_Idf_elever (file_name,dico_tf_idf) :
+    Liste = []
+    max = 0
+    for i in file_name :
+        for j in dico_tf_idf[i].items() :
+            if j[1] > max :
+                Liste=[]
+                Liste.append(j[0])
+                max = j[1]
+                print(max)
+            if j[1] == max and j[0] not in Liste :
+                Liste.append(j[0])
+    return Liste
 
 
             

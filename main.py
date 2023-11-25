@@ -2,7 +2,6 @@ from function import *
 
 directory = "./speeches"
 files_names = list_of_files(directory, "txt")
-print(files_names)
 
 #récupération des noms des présidents
 liste_nom=nom_president(files_names)
@@ -32,3 +31,31 @@ dico_matrice_idf=(matrice_idf(dictionnaire_speech))
 #Baptiste complète jsp comment expliquer mdr
 dico_matrice_tf_idf=(matrice_tf_idf(dictionnaire_speech,dico_matrice_idf))
 
+def Fonctionnalité () :
+    num=int(input("A quel fonctionnalité souhaitez vous accéder ?\n "
+                  "Pour la fonctionnalité 1 : taper 1 \n"
+                  "Pour la fonctionnalité 2 : taper 2 \n"
+                  "Pour la fonctionnalité 3 : taper 3 \n"
+                  "Pour la fonctionnalité 4 : taper 4 \n"
+                  "Pour la fonctionnalité 5 : taper 5 \n"
+                  "Pour la fonctionnalité 6 : taper 6 "))
+    while num <1 or num > 6 :
+        num=int(input("Cette fonctionnalité n'est pas disponible veuillez donner un numéro entre 1 et 6 inclus !"))
+    if num == 1  : #Fonctionnalité 1
+        print("La liste des mots non important est : ",list_mot_non_important(files_names, dico_matrice_tf_idf))  #Fonctionnalité 1
+    if num == 2  : #Fonctionnalité 2
+        if len(Tf_Idf_elever(files_names, dico_matrice_tf_idf)) ==1 :
+            print("Le mot ayant le score TD-IDF le plus élever est :",Tf_Idf_elever(files_names, dico_matrice_tf_idf))
+        else :
+            print("Les mots ayant le score le plus élever sont :",Tf_Idf_elever(files_names, dico_matrice_tf_idf))
+
+    if num == 3 :
+        pass
+    if num == 4 :
+        pass
+    if num == 5 :
+        pass
+    if num == 6 :
+        pass
+
+Fonctionnalité()
