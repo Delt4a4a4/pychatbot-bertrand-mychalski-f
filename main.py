@@ -82,7 +82,7 @@ def Fonctionnalité () :
     if num == 5 : #Fonctionnalité 5
         pass
     if num == 6 : #Fonctionnalité 6
-        pass
+        print(mot_répété_par_tous(dico_matrice_idf))
 
 Fonctionnalité()
 

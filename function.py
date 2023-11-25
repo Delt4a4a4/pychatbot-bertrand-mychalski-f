@@ -174,10 +174,6 @@ def Trouver_mot (mot,dico_speech,file_name) :
             Dico_President_occurence[nom_president(i)] = dico_speech[i][mot]
     return Dico_President_occurence
 
-
-
-            
-            
 def mot_répété_par_tous(dico_idf):
     mots_non_importants=["au", "aux", "avec", "ce", "ces", "dans", "de", "des", "du", "elle", "en", "et", "eux", "il", "ils",
     "je", "la", "le", "les", "leur", "lui", "ma", "mais", "me", "meme", "mes", "moi", "mon", "ne", "nos",
