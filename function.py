@@ -34,6 +34,15 @@ def prenom (list_name) :
 
 #Fonction qui crée un nouveau dossier contenant les textes du dossier speeches tout en minuscule
 def conversion_min (list_doc) :
+        """
+    entrée : 
+        - liste_doc(list) : liste contenant le nom des fichiers texte(str)
+    sortie :
+        - /
+        
+    Description :
+        - Fonction qui crée un nouveau dossier contenant les textes du dossier speeches convertis en minuscule
+    """
     #os.mkdir("cleaned")
     for i in list_doc :
         with open("speeches/" + i, "r") as f1,open("cleaned/"+i,"w") as f2:
