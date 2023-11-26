@@ -33,7 +33,7 @@ dico_matrice_idf=(matrice_idf(dictionnaire_speech))
 
 #Création d'un dictionnaire prenant en clé le nom des textes et associant à chacun d'eux un dictionnaire contenant le score TF-IDF de chacun des mots
 dico_matrice_tf_idf=(matrice_tf_idf(dictionnaire_speech,dico_matrice_idf))
-print(dico_matrice_tf_idf)
+
 def Fonctionnalité () :
     num=int(input("A quel fonctionnalité souhaitez vous accéder ?\n "
                   "Pour la fonctionnalité 1 : taper 1 \n"

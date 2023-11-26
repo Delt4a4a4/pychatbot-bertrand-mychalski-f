@@ -163,7 +163,6 @@ def Tf_Idf_elever (file_name,dico_tf_idf) :
                 Liste=[]
                 Liste.append(j[0])
                 max = j[1]
-                print(max)
             if j[1] == max and j[0] not in Liste :
                 Liste.append(j[0])
     return Liste
