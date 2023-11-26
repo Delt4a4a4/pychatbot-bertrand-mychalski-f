@@ -46,6 +46,15 @@ def conversion_min (list_doc) :
 
 #Fonction qui supprime la ponctuation dans un texte
 def ponctuation (line) :
+    """
+    entrée : 
+        - line(str) : chaine de caractères issue d'un texte
+    sortie :
+        - chaine(str) : même chaine de caractère sans la ponctuation
+        
+    Description :
+        - Fonction qui supprime la ponctuation dans un texte
+    """
     ponctuation1= "!:,.?;()/\_*\n-'[]"
     chaine=""
     for i in line :
