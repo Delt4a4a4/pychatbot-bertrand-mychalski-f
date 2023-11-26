@@ -90,8 +90,20 @@ def conversion_lettre (list_texte) :
                 f.write(chaine)
 
 def occurence_matrice_tf(chaine_de_caractere):
-    mot=""
-    dictionnaire={}
+      """
+    entrée : 
+        - chaine_de_caractere(str): chaine de caractères contenant un texte sans ponctuation, majuscule et autres caractères spéciaux. Seulement des mots séparés par des espaces
+    sortie :
+        - dictionnaire associant à chaque nom de texte(clé : str) un dictionnaire(valeur : dict) associant à chaque mot(clé : str) son score TF(valeur : int)
+        
+    Description :
+        - La fonction parcours la chaine de caractère et créée une sous-chaine(str) jusqu'à ce qu'il y ait le caractère espace. La sous-chaine ainsi obtenue est un mot. La fonction vérifie alors si
+        le mot est déjà enregistré en clé dans le dictionnaire. Si oui, elle ajoute +1 à son score TF (valeur associée : int), sinon elle initialise son score TF à 1. Enfin, la fonction retourne le
+        dictionnaire associant à chaque mot son score TF.
+    """
+    mot="" # initialisation de la variable mot
+    dictionnaire={} # initialisation du dictionnaire qui est retourné à la fin de l'execution de la fonction 
+    # detection des mots dans la chaine de caractère et calcul du score TF
     for i in range(2,len(chaine_de_caractere)-2): #commencement a 2 et fin a -2 pour éviter les crochets et les guillements de début et de fin
         if chaine_de_caractere[i]==" ":
             if mot in dictionnaire:
@@ -108,15 +120,15 @@ def occurence_matrice_tf(chaine_de_caractere):
             mot=""
         else:
             mot=mot+chaine_de_caractere[i]
-    del dictionnaire[""]
-    return dictionnaire
+    del dictionnaire[""] # suppression du score TF du caractère espace enregistré dans le dictionnaire
+    return dictionnaire # retournement du dico associant à chaque mot son score TF
 
 def matrice_idf(dico_entrant):
       """
     entrée : 
-        - dico_entrant(dict) : dictionnaire associant à chaque nom de texte un dictionnaire(dict) associant à chaque mot(clé : str) son score TF(valeur : int)
+        - dico_entrant(dict) : dictionnaire associant à chaque nom de texte(clé : str) un dictionnaire(valeur : dict) associant à chaque mot(clé : str) son score TF(valeur : int)
     sortie :
-        - dico_sortant(dict) : dictionnaire associant à chaque mot(str) son score IDF(float)
+        - dico_sortant(dict) : dictionnaire associant à chaque mot(clé : str) son score IDF(valeur : float)
         
     Description :
         - La fonction parcours pour chaque dictionnaire TF(valeur : dict) associé à chaque texte(clé : str). Elle parcours les mots qui constitue la clé des sous dictionnaires et initialise à 1
