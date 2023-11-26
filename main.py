@@ -92,3 +92,7 @@ def Fonctionnalité () :
 
 Fonctionnalité()
 
+#"ecologie", "environnement","environnements", "durable", "biodiversite", "écosysteme","ecosystemes", "renouvelable", "climatique","climatiques", "carbone",
+#        "deforestation", "pollution","pollutions", "recyclage","serre","eco", "energetique","nature","biologique","biologiques", "environnementale","environnemental","environnementaux"
+#       "faune", "flore","rechauffement","giec","ecologiste","ecologistes","agroecologie", "ecologique","ecologiques","verte","vert","vertes","verts", "espèces","espèce",
+#       "animaux","animal","permaculture","naturels","naturel"
