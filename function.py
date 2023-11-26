@@ -124,16 +124,18 @@ def matrice_idf(dico_entrant):
         (dict) et le modifie en effectuant le calcul du score idf à partir de la valeur (int) déjà enregistrée qui représente le nombre de texte dans lequel le mot apparait. Enfin, elle retourne
         le dico_sortant(dict).
     """
-    dico_sortant={}
+    dico_sortant={} # initialisation du dico_sortant qui est retourné à la fin de l'execution de la fonction 
+    # Calcul du nombre de texte dans lequel chaque mot apparait
     for matrice_tf in dico_entrant.values():
         for cle in matrice_tf.keys():
             if cle in dico_sortant.keys():
                 dico_sortant[cle]+=1
             else:
                 dico_sortant[cle]=1
+    # calcul du score IDF de chaque mot
     for key in dico_sortant.keys():
         dico_sortant[key]=math.log10((len(dico_entrant)/dico_sortant[key])+1)
-    return dico_sortant
+    return dico_sortant # retournement du dico associant à chaque mot son score IDF
         
 def matrice_tf_idf(integral_dico_tf,dico_idf):
     """
