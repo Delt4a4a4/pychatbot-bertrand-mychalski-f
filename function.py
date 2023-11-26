@@ -75,8 +75,6 @@ def conversion_lettre (list_texte) :
             for line in content :
                 chaine=""
                 for i in line :
-                    if i == "Ã" :
-                        chaine += ""
                     if i == "§" : #ç
                         chaine+= "c"
                     elif i in "©ª¨ë" : #éêè
