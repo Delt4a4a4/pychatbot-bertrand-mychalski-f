@@ -149,7 +149,7 @@ def list_mot_non_important(file_name,dico_tf_idf) :
     Liste = []
     for i in file_name :
         for j in dico_tf_idf[i].items() :
-            if j[1] == 0 :
+            if j[1] == math.log10(2) :
                 if j  not in Liste :
                     Liste.append(j[0])
     return Liste
@@ -203,7 +203,7 @@ def mot_répété_par_tous(dico_idf):
     "eussions", "eussiez", "eussent"]
     liste_mot=[]
     for mot in dico_idf.keys():
-        if dico_idf[mot]==0 and dico_idf[mot] not in mots_non_importants:
+        if dico_idf[mot]==math.log10(2) and dico_idf[mot] not in mots_non_importants:
             liste_mot.append(mot)
     return liste_mot
 
@@ -213,14 +213,10 @@ def premier_ecologiste(dico_ensemble_itf):
                 "Nomination_Giscard dEstaing.txt",
                 "Nomination_Chirac1.txt","Nomination_Chirac2.txt",
                 "Nomination_Mitterrand1.txt", "Nomination_Mitterrand2.txt",
-                "Nomination_Sarkozy.txt"
+                "Nomination_Sarkozy.txt",
                 "Nomination_Hollande.txt",
                 "Nomination_Macron.txt"]
-    lexique_ecologie = ["ecologie", "environnement","environnements", "durable", "biodiversite", "écosysteme","ecosystemes", "renouvelable", "climatique","climatiques", "carbone",
-        "deforestation", "pollution","pollutions", "recyclage","serre","eco", "energetique","nature","biologique","biologiques", "environnementale","environnemental","environnementaux" 
-        "faune", "flore","rechauffement","giec","ecologiste","ecologistes","agroecologie", "ecologique","ecologiques","verte","vert","vertes","verts", "espèces","espèce",
-        "animaux","animal","permaculture", "naturelles", "naturel","naturelle","naturels"
-    ]
+    lexique_ecologie = ["ecologie", "climat"]
     for indice_texte in range(len(ordre_textes)) :
         for mot in lexique_ecologie:
             if mot in dico_ensemble_itf[ordre_textes[indice_texte]].keys():
