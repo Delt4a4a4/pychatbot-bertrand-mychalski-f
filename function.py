@@ -32,7 +32,7 @@ def prenom (list_name) :
             L.append("Valéry" + " " + i)
     return L
 
-
+#Fonction qui crée un nouveau dossier contenant les textes du dossier speeches tout en minuscule
 def conversion_min (list_doc) :
     #os.mkdir("cleaned")
     for i in list_doc :
@@ -44,6 +44,7 @@ def conversion_min (list_doc) :
                             i = i.replace(i[j],chr(ord(i[j])+32),1)
                     f2.write(i)
 
+#Fonction qui supprime la ponctuation dans un texte
 def ponctuation (line) :
     ponctuation1= "!:,.?;()/\_*\n-'[]"
     chaine=""
@@ -56,6 +57,7 @@ def ponctuation (line) :
             chaine += ""
     return chaine
 
+#Fonction qui supprime la ponctuation de tout les textes en utilisant la fonction ponctuation
 def suppression_ponctuation (list_doc) :
     for i in list_doc :
         with open("cleaned/"+i,"r") as f :
@@ -64,6 +66,7 @@ def suppression_ponctuation (list_doc) :
             for i in content :
                 f.write(ponctuation(i))
 
+#Fonction qui convertit les caractères spéciaux en caractères avec un code ascii entre 97 et 122
 def conversion_lettre (list_texte) :
     for i in list_texte :
         with open ("cleaned/"+i,"r") as f :
