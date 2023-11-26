@@ -202,7 +202,7 @@ def mot_répété_par_tous(dico_idf):
     "eussions", "eussiez", "eussent"]
     liste_mot=[]
     for mot in dico_idf.keys():
-        if dico_idf[mot]==math.log10(2) and dico_idf[mot] not in mots_non_importants:
+        if dico_idf[mot]==math.log10(2) and mot not in mots_non_importants:
             liste_mot.append(mot)
     return liste_mot
 
