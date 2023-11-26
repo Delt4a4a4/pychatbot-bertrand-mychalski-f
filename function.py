@@ -112,6 +112,18 @@ def occurence_matrice_tf(chaine_de_caractere):
     return dictionnaire
 
 def matrice_idf(dico_entrant):
+      """
+    entrée : 
+        - dico_entrant(dict) : dictionnaire associant à chaque nom de texte un dictionnaire(dict) associant à chaque mot(clé : str) son score TF(valeur : int)
+    sortie :
+        - dico_sortant(dict) : dictionnaire associant à chaque mot(str) son score IDF(float)
+        
+    Description :
+        - La fonction parcours pour chaque dictionnaire TF(valeur : dict) associé à chaque texte(clé : str). Elle parcours les mots qui constitue la clé des sous dictionnaires et initialise à 1
+        le score idf (valeur : int) associé au mot (clé : str) dans le dico_sortant si le mot n'est pas déjà enregistré comme clé et sinon elle fait +1. Ensuite, la fonction parcours le dico_sortant 
+        (dict) et le modifie en effectuant le calcul du score idf à partir de la valeur (int) déjà enregistrée qui représente le nombre de texte dans lequel le mot apparait. Enfin, elle retourne
+        le dico_sortant(dict).
+    """
     dico_sortant={}
     for matrice_tf in dico_entrant.values():
         for cle in matrice_tf.keys():
@@ -126,10 +138,10 @@ def matrice_idf(dico_entrant):
 def matrice_tf_idf(integral_dico_tf,dico_idf):
     """
     entrée : 
-        - (integral_dico_tf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF
-        - (dico_idf) : dictionnaire associant à chaque mot son score IDF
+        - integral_dico_tf(dict): dictionnaire associant à chaque nom de texte(str) un dictionnaire(dict) associant à chaque mot son score TF(int)
+        - dico_idf(dict) : dictionnaire associant à chaque mot(str) son score IDF(float)
     sortie :
-        - (score_tf_idf) : dictionnaire associant à chaque nom de texte un dictionnaire associant à chaque mot son score TF-IDF
+        - score_tf_idf(dict) : dictionnaire associant à chaque nom de texte(str) un dictionnaire(dict) associant à chaque mot son score TF-IDF(float)
         
     Description :
         - La fonction parcours pour chaque dictionnaire TF(inscrit en valeur) associé à chaque texte(inscrit en clé) l'ensemble des mots et multiplie le score TF
