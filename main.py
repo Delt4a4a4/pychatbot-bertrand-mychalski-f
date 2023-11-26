@@ -31,7 +31,7 @@ for i in files_names :
 #Création d'un dictionnaire contenant le score idf de chaque mot
 dico_matrice_idf=(matrice_idf(dictionnaire_speech))
 
-#Baptiste complète jsp comment expliquer mdr
+#Création d'un dictionnaire prenant en clé le nom des textes et associant à chacun d'eux un dictionnaire contenant le score TF-IDF de chacun des mots
 dico_matrice_tf_idf=(matrice_tf_idf(dictionnaire_speech,dico_matrice_idf))
 
 def Fonctionnalité () :

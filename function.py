@@ -17,7 +17,6 @@ def nom_president (nom_texte) :
         j+=1
     return x
 
-#Fonction qui retourne les prénoms et les noms des présidents
 def prenom (list_name) :
     L=[]
     for i in list_name :
@@ -33,7 +32,7 @@ def prenom (list_name) :
             L.append("Valéry" + " " + i)
     return L
 
-#Fonction qui convertit les minuscules en majuscule
+
 def conversion_min (list_doc) :
     #os.mkdir("cleaned")
     for i in list_doc :
@@ -45,7 +44,6 @@ def conversion_min (list_doc) :
                             i = i.replace(i[j],chr(ord(i[j])+32),1)
                     f2.write(i)
 
-#Fonction qui enlève toute la ponctuation d'un texte
 def ponctuation (line) :
     ponctuation1= "!:,.?;()/\_*\n-'[]"
     chaine=""
@@ -58,7 +56,6 @@ def ponctuation (line) :
             chaine += ""
     return chaine
 
-#Fonction qui a pour but de supprimer la ponctuation de tout les textes en appelant la fonction ponctuation
 def suppression_ponctuation (list_doc) :
     for i in list_doc :
         with open("cleaned/"+i,"r") as f :
@@ -215,10 +212,14 @@ def premier_ecologiste(dico_ensemble_itf):
                 "Nomination_Giscard dEstaing.txt",
                 "Nomination_Chirac1.txt","Nomination_Chirac2.txt",
                 "Nomination_Mitterrand1.txt", "Nomination_Mitterrand2.txt",
-                "Nomination_Sarkozy.txt",
+                "Nomination_Sarkozy.txt"
                 "Nomination_Hollande.txt",
                 "Nomination_Macron.txt"]
-    lexique_ecologie = ["climat","écologie" ]
+    lexique_ecologie = ["ecologie", "environnement","environnements", "durable", "biodiversite", "écosysteme","ecosystemes", "renouvelable", "climatique","climatiques", "carbone",
+        "deforestation", "pollution","pollutions", "recyclage","serre","eco", "energetique","nature","biologique","biologiques", "environnementale","environnemental","environnementaux" 
+        "faune", "flore","rechauffement","giec","ecologiste","ecologistes","agroecologie", "ecologique","ecologiques","verte","vert","vertes","verts", "espèces","espèce",
+        "animaux","animal","permaculture", "naturelles", "naturel","naturelle","naturels"
+    ]
     for indice_texte in range(len(ordre_textes)) :
         for mot in lexique_ecologie:
             if mot in dico_ensemble_itf[ordre_textes[indice_texte]].keys():
