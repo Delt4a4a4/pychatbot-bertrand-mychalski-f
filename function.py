@@ -307,3 +307,10 @@ def split_question(question) :
             print(i,"g")
             L.remove(i)
     return L
+
+def fonction(listeQuestion,dico_idf):
+    listeIntersection=[]
+    for mot in listeQuestion:
+        if mot in dico_idf.keys():
+            listeIntersection.append(mot)
+    return listeIntersection
