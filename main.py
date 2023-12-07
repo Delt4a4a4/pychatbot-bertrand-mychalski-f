@@ -90,5 +90,5 @@ def Fonctionnalité () :
     if num == 6 : #Fonctionnalité 6
         print("Hormis les mots dits « non importants »les mots répété par tous sont :",mot_répété_par_tous(dico_matrice_idf))
 
-Fonctionnalité()
 
+Fonctionnalité()

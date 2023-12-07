@@ -34,7 +34,7 @@ def prenom (list_name) :
 
 #Fonction qui crée un nouveau dossier contenant les textes du dossier speeches tout en minuscule
 def conversion_min (list_doc) :
-        """
+    """
     entrée : 
         - liste_doc(list) : liste contenant le nom des fichiers texte(str)
     sortie :
@@ -108,7 +108,7 @@ def conversion_lettre (list_texte) :
                 f.write(chaine)
 
 def occurence_matrice_tf(chaine_de_caractere):
-      """
+    """
     entrée : 
         - chaine_de_caractere(str): chaine de caractères contenant un texte sans ponctuation, majuscule et autres caractères spéciaux. Seulement des mots séparés par des espaces
     sortie :
@@ -142,7 +142,7 @@ def occurence_matrice_tf(chaine_de_caractere):
     return dictionnaire # retournement du dico associant à chaque mot son score TF
 
 def matrice_idf(dico_entrant):
-      """
+    """
     entrée : 
         - dico_entrant(dict) : dictionnaire associant à chaque nom de texte(clé : str) un dictionnaire(valeur : dict) associant à chaque mot(clé : str) son score TF(valeur : int)
     sortie :
@@ -164,7 +164,7 @@ def matrice_idf(dico_entrant):
                 dico_sortant[cle]=1
     # calcul du score IDF de chaque mot
     for key in dico_sortant.keys():
-        dico_sortant[key]=math.log10((len(dico_entrant)/dico_sortant[key])+1)
+        dico_sortant[key]=math.log10((len(dico_entrant)/dico_sortant[key]))
     return dico_sortant # retournement du dico associant à chaque mot son score IDF
         
 def matrice_tf_idf(integral_dico_tf,dico_idf):
@@ -193,7 +193,7 @@ def list_mot_non_important(file_name,dico_tf_idf) :
     Liste = []
     for i in file_name :
         for j in dico_tf_idf[i].items() :
-            if j[1] == math.log10(2) :
+            if j[1] == 0 :
                 if j  not in Liste :
                     Liste.append(j[0])
     return Liste
@@ -246,7 +246,7 @@ def mot_répété_par_tous(dico_idf):
     "eussions", "eussiez", "eussent"]
     liste_mot=[]
     for mot in dico_idf.keys():
-        if dico_idf[mot]==math.log10(2) and mot not in mots_non_importants:
+        if dico_idf[mot]== 0 and mot not in mots_non_importants:
             liste_mot.append(mot)
     return liste_mot
 
