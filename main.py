@@ -91,4 +91,7 @@ def Fonctionnalité () :
         print("Hormis les mots dits « non importants »les mots répété par tous sont :",mot_répété_par_tous(dico_matrice_idf))
 
 
-print(split_question("J'aime les pâtes, les éléphants."))
+L=split_question("J'aime les pâtes, les éléphants.")
+print(recherche_mot(L,dico_matrice_idf))
+
+print(vecteur_td_idf(L,dico_matrice_idf))

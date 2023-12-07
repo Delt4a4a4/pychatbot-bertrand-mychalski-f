@@ -308,9 +308,27 @@ def split_question(question) :
             L.remove(i)
     return L
 
-def fonction(listeQuestion,dico_idf):
+def recherche_mot(listeQuestion,dico_idf):
     listeIntersection=[]
     for mot in listeQuestion:
         if mot in dico_idf.keys():
             listeIntersection.append(mot)
     return listeIntersection
+
+def vecteur_td_idf(listequestion,dico_idf) :
+    Liste_mot = recherche_mot(listequestion,dico_idf)
+    dico_tf = {}
+    dico_tf_idf = {}
+    for mot in listequestion :
+        if mot not in Liste_mot :
+            if mot not in dico_tf.keys() :
+                dico_idf[mot] = 0
+        else :
+            if mot in dico_tf.keys() :
+                print(mot,dico_tf[mot])
+                dico_tf[mot] = dico_tf[mot] + 1 /len(listequestion)
+            else :
+                dico_tf[mot] = 1/len(listequestion)
+    for i in dico_tf.items() :
+        dico_tf_idf[i[0]] = i[1] * dico_idf[i[0]]
+    return dico_tf_idf
