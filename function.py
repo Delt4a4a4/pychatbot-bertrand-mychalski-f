@@ -194,7 +194,7 @@ def list_mot_non_important(file_name,dico_tf_idf) :
     for i in file_name :
         for j in dico_tf_idf[i].items() :
             if j[1] == 0 :
-                if j  not in Liste :
+                if j[0]  not in Liste :
                     Liste.append(j[0])
     return Liste
 
@@ -277,3 +277,33 @@ def premier_ecologiste(dico_ensemble_itf):
                     president = "Emmanuel Macron"
                 return president
     return False
+
+def split_question(question) :
+    ponctuation1 = ".!:?;()/\_*\n-'[]"
+    chaine = ""
+    for i in question:
+        if i >= "A" and i <= "Z" :
+            question = question.replace(i,chr(ord(i)+32))
+    for i in question :
+        if i in ponctuation1:
+            chaine += " "
+        elif i == "ç":  # ç
+            chaine += "c"
+        elif i in "éèêë":  # éêè
+            chaine += "e"
+        elif i in "âà":  # à
+            chaine += "a"
+        elif i == "ù":  # ù
+            chaine += "u"
+        elif i == " ":
+            chaine += " "
+        if i >= "a" and i <= "z":
+            chaine += i
+        else:
+            chaine += ""
+    L = chaine.split(" ")
+    for i in L :
+        if i == "" :
+            print(i,"g")
+            L.remove(i)
+    return L
