@@ -94,5 +94,5 @@ def Fonctionnalité () :
 L=split_question("J'aime les pâtes, les éléphants.")
 print(recherche_mot(L,dico_matrice_idf))
 
-print(vecteur_td_idf(L,dico_matrice_idf))
-print(len(dico_matrice_idf))
+a=vecteur_td_idf_2(L,dico_matrice_idf)
+
