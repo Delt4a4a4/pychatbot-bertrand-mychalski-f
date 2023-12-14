@@ -1,5 +1,6 @@
 import os
 import math
+import numpy
 #fonction pour récuperer les noms des docs
 def list_of_files(directory, extension):
     files_names = []
@@ -322,13 +323,15 @@ def vecteur_td_idf(listequestion,dico_idf) :
     for mot in listequestion :
         if mot not in Liste_mot :
             if mot not in dico_tf.keys() :
-                dico_idf[mot] = 0
+                pass
         else :
             if mot in dico_tf.keys() :
-                print(mot,dico_tf[mot])
                 dico_tf[mot] = dico_tf[mot] + 1 /len(listequestion)
             else :
                 dico_tf[mot] = 1/len(listequestion)
     for i in dico_tf.items() :
         dico_tf_idf[i[0]] = i[1] * dico_idf[i[0]]
     return dico_tf_idf
+
+def produit_scalaire (A,B) :
+    return numpy.dot(A,B)
