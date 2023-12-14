@@ -366,4 +366,13 @@ def norme(dicoA):
 def calcul_de_similarite(dicoA,dicoB):
     return produit_scalaire(dicoA,dicoB)/(norme(dicoA)*norme(dicoB))
 
+def calcul_doc_plus_pertinant(tf_idf_question,tf_idf_corpus):
+    maximum=0
+    for nom_texte in tf_idf_corpus.values:
+        score=calcul_doc_similarite(tf_idf_question,tf_idf_corpus[nom_texte])
+        if score>maximum:
+            maximum=score
+            texte_plus_pertinant=nom_texte
+    return texte_plus_pertinant
+
  
