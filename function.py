@@ -347,5 +347,12 @@ def vecteur_td_idf_2(listequestion,dico_idf) :
     return dico_tf_idf
 
 
-    
+
+def produit_scalaire(dicoA,dicoB):
+    somme=0
+    for mot in dicoA.values():
+        if mot in dicoB.values():
+            somme+=dicoA[mot]*dicoB[mot]
+    return somme
+            
  
