@@ -363,4 +363,7 @@ def norme(dicoA):
     return math.sqrt(somme)
 
 
+def calcul_de_similarite(dicoA,dicoB):
+    return produit_scalaire(dicoA,dicoB)/(norme(dicoA)*norme(dicoB))
+
  
