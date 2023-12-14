@@ -332,3 +332,20 @@ def vecteur_td_idf(listequestion,dico_idf) :
     for i in dico_tf.items() :
         dico_tf_idf[i[0]] = i[1] * dico_idf[i[0]]
     return dico_tf_idf
+
+def vecteur_td_idf_2(listequestion,dico_idf) :
+    Liste_mot = recherche_mot(listequestion,dico_idf)
+    dico_tf = {}
+    dico_tf_idf = {}
+    for mot in dico_idf.keys():
+        if mot in Liste_mot:
+            dico_tf[mot]=liste_mot.count(mot)/len(listequestion)
+        else:
+            dico_tf=0
+        for i in dico_tf.items() :
+        dico_tf_idf[i[0]] = i[1] * dico_idf[i[0]]
+    return dico_tf_idf
+
+
+    
+ 
