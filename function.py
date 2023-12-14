@@ -356,5 +356,11 @@ def produit_scalaire(dicoA, dicoB):
             somme += dicoA[mot] * dicoB[mot]
     return somme
 
+def norme(dicoA):
+    somme=0
+    for score in dico.values():
+        somme+=score*score
+    return math.sqrt(somme)
+
 
  
