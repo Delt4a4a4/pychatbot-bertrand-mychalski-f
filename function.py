@@ -376,3 +376,12 @@ def calcul_doc_plus_pertinant(tf_idf_question,tf_idf_corpus):
     return texte_plus_pertinant
 
  
+def mot_plus_pertinant(tf_idf_question,tf_idf_texte):
+    max=0
+    for mot in dico_idf_question.keys():
+        if mot in tf_idf_texte.keys():
+            score=tf_idf_question[mot]*tf_idf_texte[mot]
+            if score>max:
+                max=score
+                mot_le_plus_pertinant=mot
+    return mot_le_plus_pertinant
