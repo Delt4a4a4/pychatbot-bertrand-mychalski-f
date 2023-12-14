@@ -341,16 +341,18 @@ def vecteur_td_idf_2(listequestion,dico_idf) :
         if mot in Liste_mot:
             dico_tf[mot]=Liste_mot.count(mot)/len(listequestion)
         else:
-            dico_tf=0
+            dico_tf[mot]=0
         for i in dico_tf.items() :
             dico_tf_idf[i[0]] = i[1] * dico_idf[i[0]]
     return dico_tf_idf
 
 
 def produit_scalaire(dicoA, dicoB):
+    print(dicoA)
+    print(dicoB)
     somme = 0
-    for mot in dicoA.values():
-        if mot in dicoB.values():
+    for mot in dicoA.keys():
+        if mot in dicoB.keys():
             somme += dicoA[mot] * dicoB[mot]
     return somme
 

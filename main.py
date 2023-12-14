@@ -95,4 +95,5 @@ L=split_question("J'aime les pâtes, les éléphants.")
 print(recherche_mot(L,dico_matrice_idf))
 
 a=vecteur_td_idf_2(L,dico_matrice_idf)
-
+print(a)
+print(produit_scalaire(dico_matrice_tf_idf["Nomination_Chirac2.txt"],dico_matrice_tf_idf["Nomination_Chirac1.txt"]))
