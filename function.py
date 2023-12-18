@@ -75,7 +75,7 @@ def ponctuation (line) :
             chaine += ""
     return chaine
 
-#Fonction qui supprime la ponctuation de tout les textes en utilisant la fonction ponctuation
+#Fonction qui supprime la ponctuation de tous les textes en utilisant la fonction ponctuation
 def suppression_ponctuation (list_doc) :
     for i in list_doc :
         with open("cleaned/"+i,"r") as f :
