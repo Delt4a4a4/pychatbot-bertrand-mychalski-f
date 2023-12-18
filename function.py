@@ -304,7 +304,6 @@ def split_question(question) :
     L = chaine.split(" ")
     for i in L :
         if i == "" :
-            print(i,"g")
             L.remove(i)
     return L
 
@@ -358,30 +357,70 @@ def produit_scalaire(dicoA, dicoB):
 
 def norme(dicoA):
     somme=0
-    for score in dico.values():
+    for score in dicoA.values():
         somme+=score*score
     return math.sqrt(somme)
 
 
-def calcul_de_similarite(dicoA,dicoB):
+def calcul_doc_similarite(dicoA,dicoB):
     return produit_scalaire(dicoA,dicoB)/(norme(dicoA)*norme(dicoB))
 
 def calcul_doc_plus_pertinant(tf_idf_question,tf_idf_corpus):
     maximum=0
-    for nom_texte in tf_idf_corpus.values:
+    for nom_texte in tf_idf_corpus.keys():
         score=calcul_doc_similarite(tf_idf_question,tf_idf_corpus[nom_texte])
         if score>maximum:
             maximum=score
             texte_plus_pertinant=nom_texte
     return texte_plus_pertinant
 
- 
 def mot_plus_pertinant(tf_idf_question,tf_idf_texte):
     max=0
-    for mot in dico_idf_question.keys():
+    for mot in tf_idf_question.keys():
         if mot in tf_idf_texte.keys():
             score=tf_idf_question[mot]*tf_idf_texte[mot]
             if score>max:
                 max=score
                 mot_le_plus_pertinant=mot
     return mot_le_plus_pertinant
+
+def liste_mot_question (question) :
+    for i in question:
+        if i >= "A" and i <= "Z" :
+            question = question.replace(i,chr(ord(i)+32))
+    L = question.split(" ")
+    for i in L:
+        if i == "":
+            L.remove(i)
+    return L
+
+def generation_reponse (question,dico_matrice_idf,dico_matrice_tf_idf) :
+    question_liste = liste_mot_question(question)
+    question_clean = split_question(question)
+    vecteur = vecteur_td_idf_2(question_clean,dico_matrice_idf)
+    doc_pertinant = calcul_doc_plus_pertinant(vecteur,dico_matrice_tf_idf)
+    mot_pertinant = mot_plus_pertinant(vecteur,dico_matrice_tf_idf[doc_pertinant])
+    if mot_pertinant in question :
+        with open ("speeches/" + doc_pertinant,"r",encoding="Utf-8") as f :
+            ligne = f.readlines()
+            for i in ligne :
+                if mot_pertinant in i :
+                    return i
+    else :
+        max=[0,""]
+        for mot in question_liste :
+            if len(mot) == len(mot_pertinant) :
+                i=0
+                for lettre in mot :
+                    if lettre in mot_pertinant :
+                        i += 1
+                if max[0] < i :
+                    max [1] = mot
+        mot_pertinant = max[1]
+        with open ("speeches/" + doc_pertinant,"r",encoding="Utf-8") as f :
+            ligne = f.readlines()
+            for i in ligne :
+                if mot_pertinant in i :
+                    return i
+
+

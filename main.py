@@ -79,7 +79,7 @@ def Fonctionnalité () :
                 max = i[1]
                 nom = i[0]
         if len(Liste) > 0 :
-            print("Les présidents qui ont utilisé le mot 'Nation' sont :",Liste," et le president qui a le plus utilisé le mot 'Nation' est : ",nom)
+            print("Les présidents qui ont utilisé le mot 'Nation' sont :",Liste," et le président qui a le plus utilisé le mot 'Nation' est : ",nom)
         else :
             print("Aucun président n'a utilisé le mot Nation")
     if num == 5 : #Fonctionnalité 5
@@ -91,9 +91,34 @@ def Fonctionnalité () :
         print("Hormis les mots dits « non importants »les mots répété par tous sont :",mot_répété_par_tous(dico_matrice_idf))
 
 
-L=split_question("J'aime les pâtes, les éléphants.")
+"""L=split_question("J'aime les pâtes, les éléphants.")
 print(recherche_mot(L,dico_matrice_idf))
 
 a=vecteur_td_idf_2(L,dico_matrice_idf)
 print(a)
 print(produit_scalaire(dico_matrice_tf_idf["Nomination_Chirac2.txt"],dico_matrice_tf_idf["Nomination_Chirac1.txt"]))
+print(norme(dico_matrice_tf_idf["Nomination_Chirac2.txt"]))"""
+question_starters = { "comment" : "Après analyse,","pourquoi" : "Car","eux-tu":"Oui bien sûr"}
+def partie_2 () :
+    question = str(input("Posez moi une question !"))
+    x = generation_reponse(question, dico_matrice_idf, dico_matrice_tf_idf)
+    L=liste_mot_question(question)
+    if x[0] >= "A" and x[0] <= "Z" :
+            x = x.replace(x[0],chr(ord(x[0])+32))
+    if L[0] in question_starters.keys() :
+        return  question_starters[L[0]] + x
+    else :
+        return x
+
+def lancement_prog () :
+    x = int(input("Si vous voulez accéder à la partie 1 : tapez 1\n"
+                  "Si vous voulez accédere à la partie 2 : tapez 2 "))
+    while x != 1 and x !=2 :
+        x = int(input("Si vous voulez accéder à la partie 1 : tapez 1\n"
+                      "Si vous voulez accédere à la partie 2 : tapez 2 "))
+    if x == 1 :
+        Fonctionnalité()
+    elif x== 2 :
+        print(partie_2())
+
+lancement_prog()
