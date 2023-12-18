@@ -16,7 +16,7 @@ def nom_president (nom_texte) :
         x+= nom_texte[j]
         j+=1
     return x
-
+#fonction pour ajouter le prénom à la liste contenant les noms des présidents
 def prenom (list_name) :
     L=[]
     for i in list_name :
