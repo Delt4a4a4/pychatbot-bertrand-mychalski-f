@@ -107,6 +107,7 @@ def conversion_lettre (list_texte) :
                         chaine += i
                 f.write(chaine)
 
+# fonction calculant le score tf de chaque mot dans un texte
 def occurence_matrice_tf(chaine_de_caractere):
     """
     entrée : 
@@ -141,6 +142,8 @@ def occurence_matrice_tf(chaine_de_caractere):
     del dictionnaire[""] # suppression du score TF du caractère espace enregistré dans le dictionnaire
     return dictionnaire # retournement du dico associant à chaque mot son score TF
 
+
+# fonction calculant le score idf de chaque mot dans le corpus
 def matrice_idf(dico_entrant):
     """
     entrée : 
@@ -166,7 +169,8 @@ def matrice_idf(dico_entrant):
     for key in dico_sortant.keys():
         dico_sortant[key]=math.log10((len(dico_entrant)/dico_sortant[key]))
     return dico_sortant # retournement du dico associant à chaque mot son score IDF
-        
+
+# fonction calculant le score tf-idf de chaque mot dans un texte et ce pour tous les textes
 def matrice_tf_idf(integral_dico_tf,dico_idf):
     """
     entrée : 
@@ -188,7 +192,7 @@ def matrice_tf_idf(integral_dico_tf,dico_idf):
         score_tf_idf[nom_texte]=score_tf_idf_par_texte # enregistre les dico des scores tf idf par texte dans le dico les contenants tous
     return score_tf_idf # retournement du dico obtenu
 
-#Fonctionnalité 1 :
+#Fonctionnalité 1 : renvoie la liste des mots non importants : score tf-idf = 0
 def list_mot_non_important(file_name,dico_tf_idf) :
     Liste = []
     for i in file_name :
