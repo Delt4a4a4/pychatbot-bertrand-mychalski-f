@@ -16,7 +16,7 @@ def nom_president (nom_texte) :
         x+= nom_texte[j]
         j+=1
     return x
-
+#fonction pour ajouter le prénom à la liste contenant les noms des présidents
 def prenom (list_name) :
     L=[]
     for i in list_name :
@@ -75,7 +75,7 @@ def ponctuation (line) :
             chaine += ""
     return chaine
 
-#Fonction qui supprime la ponctuation de tout les textes en utilisant la fonction ponctuation
+#Fonction qui supprime la ponctuation de tous les textes en utilisant la fonction ponctuation
 def suppression_ponctuation (list_doc) :
     for i in list_doc :
         with open("cleaned/"+i,"r") as f :
@@ -107,6 +107,7 @@ def conversion_lettre (list_texte) :
                         chaine += i
                 f.write(chaine)
 
+# fonction calculant le score tf de chaque mot dans un texte
 def occurence_matrice_tf(chaine_de_caractere):
     """
     entrée : 
@@ -141,6 +142,8 @@ def occurence_matrice_tf(chaine_de_caractere):
     del dictionnaire[""] # suppression du score TF du caractère espace enregistré dans le dictionnaire
     return dictionnaire # retournement du dico associant à chaque mot son score TF
 
+
+# fonction calculant le score idf de chaque mot dans le corpus
 def matrice_idf(dico_entrant):
     """
     entrée : 
@@ -166,7 +169,8 @@ def matrice_idf(dico_entrant):
     for key in dico_sortant.keys():
         dico_sortant[key]=math.log10((len(dico_entrant)/dico_sortant[key]))
     return dico_sortant # retournement du dico associant à chaque mot son score IDF
-        
+
+# fonction calculant le score tf-idf de chaque mot dans un texte et ce pour tous les textes
 def matrice_tf_idf(integral_dico_tf,dico_idf):
     """
     entrée : 
@@ -188,7 +192,7 @@ def matrice_tf_idf(integral_dico_tf,dico_idf):
         score_tf_idf[nom_texte]=score_tf_idf_par_texte # enregistre les dico des scores tf idf par texte dans le dico les contenants tous
     return score_tf_idf # retournement du dico obtenu
 
-#Fonctionnalité 1 :
+#Fonctionnalité 1 : renvoie la liste des mots non importants : score tf-idf = 0
 def list_mot_non_important(file_name,dico_tf_idf) :
     Liste = []
     for i in file_name :
@@ -197,7 +201,8 @@ def list_mot_non_important(file_name,dico_tf_idf) :
                 if j[0]  not in Liste :
                     Liste.append(j[0])
     return Liste
-
+    
+# fonction retournant le mot avec le score tf_idf le plus élevé
 def Tf_Idf_elever (file_name,dico_tf_idf) :
     Liste = []
     max = 0
@@ -211,6 +216,7 @@ def Tf_Idf_elever (file_name,dico_tf_idf) :
                 Liste.append(j[0])
     return Liste
 
+# renvoie le mot le plus répété dans un texte
 def mot_le_plus_repeter (nom_president,dico_speeche) :
     max=0
     mot=[]
@@ -230,6 +236,7 @@ def Trouver_mot (mot,dico_speech,file_name) :
             Dico_President_occurence[nom_president(i)] = dico_speech[i][mot]
     return Dico_President_occurence
 
+# renvoie les mots répétés par tous les ptésidents hormis les mots dit "non-importants"
 def mot_répété_par_tous(dico_idf):
     mots_non_importants=["au", "aux", "avec", "ce", "ces", "dans", "de", "des", "du", "elle", "en", "et", "eux", "il", "ils",
     "je", "la", "le", "les", "leur", "lui", "ma", "mais", "me", "meme", "mes", "moi", "mon", "ne", "nos",
@@ -250,7 +257,7 @@ def mot_répété_par_tous(dico_idf):
             liste_mot.append(mot)
     return liste_mot
 
-
+# renvoie le nom du premier président à avoir parlé d’écologie
 def premier_ecologiste(dico_ensemble_itf):
     ordre_textes=[
                 "Nomination_Giscard dEstaing.txt",
@@ -278,6 +285,7 @@ def premier_ecologiste(dico_ensemble_itf):
                 return president
     return False
 
+# découpe la question en liste de mot sans ponctuation et caractères spéciaux
 def split_question(question) :
     ponctuation1 = ".!:?;()/\_*\n-'[]"
     chaine = ""
@@ -307,6 +315,7 @@ def split_question(question) :
             L.remove(i)
     return L
 
+# renvoie une liste des mots à la fois présent dans le corpus et dans la question
 def recherche_mot(listeQuestion,dico_idf):
     listeIntersection=[]
     for mot in listeQuestion:
@@ -314,6 +323,7 @@ def recherche_mot(listeQuestion,dico_idf):
             listeIntersection.append(mot)
     return listeIntersection
 
+# ancienne fonction non utilisée
 def vecteur_td_idf(listequestion,dico_idf) :
     Liste_mot = recherche_mot(listequestion,dico_idf)
     dico_tf = {}
@@ -331,6 +341,8 @@ def vecteur_td_idf(listequestion,dico_idf) :
         dico_tf_idf[i[0]] = i[1] * dico_idf[i[0]]
     return dico_tf_idf
 
+
+# calcul le vecteur td-idf de la question
 def vecteur_td_idf_2(listequestion,dico_idf) :
     Liste_mot = recherche_mot(listequestion,dico_idf)
     dico_tf = {}
@@ -344,24 +356,25 @@ def vecteur_td_idf_2(listequestion,dico_idf) :
             dico_tf_idf[i[0]] = i[1] * dico_idf[i[0]]
     return dico_tf_idf
 
-
+# effectue le produit scalaire de 2 vecteurs sous forme de dictionnaires
 def produit_scalaire(dicoA, dicoB):
     somme = 0
     for mot in dicoA.keys():
         if mot in dicoB.keys():
             somme += dicoA[mot] * dicoB[mot]
     return somme
-
+# calcul la norme d'un vecteur sous forme de dictionnaire
 def norme(dicoA):
     somme=0
     for score in dicoA.values():
         somme+=score*score
     return math.sqrt(somme)
 
-
+# effectue le calcul de similarité à partir de 2 vecteurs sous forme de dictionnaires
 def calcul_doc_similarite(dicoA,dicoB):
     return produit_scalaire(dicoA,dicoB)/(norme(dicoA)*norme(dicoB))
 
+# fonction qui renvoie le document qui semble le plus pertinent vis-à-vis de la question posée
 def calcul_doc_plus_pertinant(tf_idf_question,tf_idf_corpus):
     maximum=0
     for nom_texte in tf_idf_corpus.keys():
@@ -371,6 +384,7 @@ def calcul_doc_plus_pertinant(tf_idf_question,tf_idf_corpus):
             texte_plus_pertinant=nom_texte
     return texte_plus_pertinant
 
+# cherche le mot le plus pertinant au vu de la question et du texte renvoyé comme étant le plus pertinent
 def mot_plus_pertinant(tf_idf_question,tf_idf_texte):
     max=0
     for mot in tf_idf_question.keys():
@@ -391,6 +405,7 @@ def liste_mot_question (question) :
             L.remove(i)
     return L
 
+# génère la réponse à la question posée à partir du corpus de texte
 def generation_reponse (question,dico_matrice_idf,dico_matrice_tf_idf) :
     question_liste = liste_mot_question(question)
     question_clean = split_question(question)
