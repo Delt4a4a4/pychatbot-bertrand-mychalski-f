@@ -334,7 +334,6 @@ def vecteur_td_idf(listequestion,dico_idf) :
                 dico_idf[mot] = 0
         else :
             if mot in dico_tf.keys() :
-                print(mot,dico_tf[mot])
                 dico_tf[mot] = dico_tf[mot] + 1 /len(listequestion)
             else :
                 dico_tf[mot] = 1/len(listequestion)
@@ -359,8 +358,6 @@ def vecteur_td_idf_2(listequestion,dico_idf) :
 
 # effectue le produit scalaire de 2 vecteurs sous forme de dictionnaires
 def produit_scalaire(dicoA, dicoB):
-    print(dicoA)
-    print(dicoB)
     somme = 0
     for mot in dicoA.keys():
         if mot in dicoB.keys():
