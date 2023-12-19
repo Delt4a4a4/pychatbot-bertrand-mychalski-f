@@ -91,13 +91,7 @@ def Fonctionnalité () :
         print("Hormis les mots dits « non importants »les mots répété par tous sont :",mot_répété_par_tous(dico_matrice_idf))
 
 
-"""L=split_question("J'aime les pâtes, les éléphants.")
-print(recherche_mot(L,dico_matrice_idf))
 
-a=vecteur_td_idf_2(L,dico_matrice_idf)
-print(a)
-print(produit_scalaire(dico_matrice_tf_idf["Nomination_Chirac2.txt"],dico_matrice_tf_idf["Nomination_Chirac1.txt"]))
-print(norme(dico_matrice_tf_idf["Nomination_Chirac2.txt"]))"""
 question_starters = { "comment" : "Après analyse,","pourquoi" : "Car","eux-tu":"Oui bien sûr"}
 def partie_2 () :
     question = str(input("Posez moi une question !"))
