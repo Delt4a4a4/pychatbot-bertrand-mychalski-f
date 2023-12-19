@@ -115,4 +115,5 @@ def lancement_prog () :
     elif x== 2 :
         print(partie_2())
 
+
 lancement_prog()
